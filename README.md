@@ -7,6 +7,12 @@ the per-pixel error, the average magnitude spectrum, and a frequency-bin
 retention mask side by side. The quantization table is editable, and PSNR /
 MSE / retention % / bits-per-pixel update live.
 
+![Original, reconstruction, error, spectrum, and retained-coefficient mask side by side](app/public/screenshots/screenshot_block.png)
+
+The top row, left to right: the original (click any 8×8 block to inspect it),
+the reconstruction, the per-pixel error (×4), the average magnitude spectrum,
+and the frequency-bin retention mask.
+
 ## Run
 
 ```bash
@@ -53,9 +59,18 @@ For each 8×8 block of the input:
 4. Multiply back, inverse DCT, add 128 to return to pixel space.
 5. Reassemble blocks, crop to the original dimensions.
 
+Selecting a block walks every stage numerically, from raw pixels through the
+quantized coefficients to the reconstructed block and its error against the
+original:
+
+![Per-block numeric walkthrough of the full DCT pipeline](app/public/screenshots/screenshot_process.png)
+
 Tweak the quantization table or the global scale to see how aggressively the
 high-frequency bins get zeroed out, what that does to the reconstruction, and
-how PSNR and the retention mask respond.
+how PSNR and the retention mask respond. Each cell of the table is editable,
+and the scale slider multiplies the whole table at once:
+
+![Editable JPEG luminance quantization table with base and effective values](app/public/screenshots/screenshot_quantization.png)
 
 ## Stack
 
