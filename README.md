@@ -1,4 +1,4 @@
-# Fingerprint DFT
+# Discrete Fourier Transform on Fingerprints
 
 Interactive 2D DCT explorer for grayscale fingerprint images. Implements the
 JPEG-style 8×8 block pipeline — level-shift, forward DCT, divide-by-table and
